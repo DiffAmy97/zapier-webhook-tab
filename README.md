@@ -45,3 +45,9 @@ return {
   message: params.get("message"),
   recordId: params.get("recordId")
 };
+## Final Notes
+```html
+<p>If you want the tab to close automatically after sending data, uncomment the <code>window.close()</code> line in <code>triggerHook.html</code>.</p>
+<p>This approach keeps your setup lightweight and avoids CORS hurdles by sending data via form encoding.</p>
+<p><strong>Happy automating!</strong> Feel free to open an issue or submit a pull request if you have questions or improvements.</p>
+```
