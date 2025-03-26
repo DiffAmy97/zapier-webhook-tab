@@ -12,14 +12,19 @@
     <script>
         const params = new URLSearchParams(window.location.search);
         const zapierUrl = params.get("url");
+        const recordId = params.get("recordId"); // <-- NEW: Grab recordId
 
         if (zapierUrl) {
             console.log("🚀 Sending webhook to:", zapierUrl);
+            console.log("📌 Record ID:", recordId);
 
             fetch(zapierUrl, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ message: "Triggered from GitHub Page" })
+                body: JSON.stringify({
+                    message: "Triggered from GitHub Page",
+                    recordId: recordId // <-- NEW: Include recordId in request
+                })
             })
             .then(response => response.text())
             .then(data => {
