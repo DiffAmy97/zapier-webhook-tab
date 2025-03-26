@@ -45,6 +45,10 @@ return {
   message: params.get("message"),
   recordId: params.get("recordId")
 };
+```
+
+This outputs clean fields (`message`, `recordId`) you can map in later Zap steps.
+
 ## Final Notes
 ```html
 <p>If you want the tab to close automatically after sending data, uncomment the <code>window.close()</code> line in <code>triggerHook.html</code>.</p>
