@@ -30,11 +30,12 @@
             .then(data => {
                 console.log("✅ Webhook Sent. Zapier Response:", data);
                 document.body.innerHTML += "<p style='color:green;'>Webhook sent successfully.</p>";
+                 setTimeout(() => window.close(), 2000); // Close after success
             })
             .catch(error => {
                 console.error("❌ Webhook Error:", error);
                 document.body.innerHTML += `<p style="color:red;">Error sending webhook: ${error}</p>`;
-                setTimeout(() => window.close(), 5000);
+                setTimeout(() => window.close(), 2000); // Close after fail
             });
         } else {
             document.body.innerHTML = "<p style='color:red;'>Error: No webhook URL provided.</p>";
