@@ -35,7 +35,7 @@
             .catch(error => {
                 console.error("❌ Webhook Error:", error);
                 document.body.innerHTML += `<p style="color:red;">Error sending webhook: ${error}</p>`;
-                setTimeout(() => window.close(), 5000);
+                setTimeout(() => window.close(), 20000);
             });
         } else {
             document.body.innerHTML = "<p style='color:red;'>Error: No webhook URL provided.</p>";
