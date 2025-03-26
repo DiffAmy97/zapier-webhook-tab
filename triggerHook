@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triggering Webhook...</title>
+</head>
+<body>
+    <p>Sending data to Zapier...</p>
+    <p>If this page doesn't close, please close it manually.</p>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const zapierUrl = params.get("url");
+
+        if (zapierUrl) {
+            console.log("🚀 Sending webhook to:", zapierUrl);
+
+            fetch(zapierUrl, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ message: "Triggered from GitHub Page" })
+            })
+            .then(response => response.text())
+            .then(data => {
+                console.log("✅ Webhook Sent. Zapier Response:", data);
+                document.body.innerHTML += "<p style='color:green;'>Webhook sent successfully.</p>";
+                setTimeout(() => window.close(), 2000); // Close after 2 seconds
+            })
+            .catch(error => {
+                console.error("❌ Webhook Error:", error);
+                document.body.innerHTML += `<p style="color:red;">Error sending webhook: ${error}</p>`;
+                setTimeout(() => window.close(), 5000);
+            });
+        } else {
+            document.body.innerHTML = "<p style='color:red;'>Error: No webhook URL provided.</p>";
+        }
+    </script>
+</body>
+</html>
