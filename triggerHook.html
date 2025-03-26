@@ -30,7 +30,6 @@
             .then(data => {
                 console.log("✅ Webhook Sent. Zapier Response:", data);
                 document.body.innerHTML += "<p style='color:green;'>Webhook sent successfully.</p>";
-                setTimeout(() => window.close(), 2000); // Close after 2 seconds
             })
             .catch(error => {
                 console.error("❌ Webhook Error:", error);
